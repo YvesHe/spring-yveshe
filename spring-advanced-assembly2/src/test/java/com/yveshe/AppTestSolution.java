@@ -57,8 +57,8 @@ public class AppTestSolution {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(com.yveshe.solution2.contextconf.ApplicationContextConf.class);
         com.yveshe.solution2.bean.Person5 person5 = context.getBean(com.yveshe.solution2.bean.Person5.class);
         Car car = person5.getCar();
-
         context.close();
+
         Assert.assertTrue(car instanceof com.yveshe.solution2.bean.BMW);
     }
 
@@ -74,8 +74,8 @@ public class AppTestSolution {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(com.yveshe.solution3.contextconf.ApplicationContextConf.class);
         com.yveshe.solution3.bean.Person6 pserson6 = context.getBean(com.yveshe.solution3.bean.Person6.class);
         com.yveshe.solution3.bean.Car car = pserson6.getCar();
-
         context.close();
+
         Assert.assertTrue(car instanceof com.yveshe.solution3.bean.BYD);
     }
 }
