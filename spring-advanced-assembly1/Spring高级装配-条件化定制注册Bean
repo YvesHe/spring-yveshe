@@ -1,0 +1,23 @@
+引言:
+假设你希望一个或多个bean只有在个特定的环境变量设置之后， 才会创建某个bean。
+在Spring 4之前， 很难实现这种级别的条件化配置， 但是Spring 4引入了一个新的@Conditional注解， 它可以用到带有@Bean注解的方法上。 
+
+例子:
+比如我们有一个场景,如果是下雨天我们就需要打伞出门,如果不是下雨天那么我们就不需要打伞出门(例子有点牵强);
+雨伞umbrella实例,只有在下雨的时候才创建,如果不是下雨的时候我们就不创建,也就是定制了一个在特定条件下才会创建Bean的场景
+
+总结:
+条件化定制一个Bean的时候,首先需要实现
+
+
+API介绍:
+ConditionContext是一个接口， 大致如下所示：
+通过ConditionContext， 我们可以做到如下几点：
+借助getRegistry()返回的BeanDefinitionRegistry检查bean定义；
+借助getBeanFactory()返回的ConfigurableListableBeanFactory检查bean是否存在，
+甚至探查bean的属性；借助getEnvironment()返回的Environment检查环境变量是否存在以及它的值是什么；
+读取并探查getResourceLoader()返回的ResourceLoader所加载的资源；
+借助getClassLoader()返回的ClassLoader加载并检查类是否存在。
+
+
+
