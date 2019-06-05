@@ -16,6 +16,11 @@ import com.yveshe.probl.contextconf.ApplicationContextConf;
  */
 public class AppTestProblem {
 
+    /**
+     * 无歧义性,IOC容器中有且只有一辆BYD
+     *
+     * 注意: 测试该方法时,需要清除已经存在的Person2,否在初始化容器就会报错,因为Person2在自动注入的时候有歧义性
+     */
     @Test
     public void shouldAnswerWithTrue() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ApplicationContextConf.class);

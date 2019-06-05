@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Person1 有一辆BYD
+ * Person2 有一辆车,是什么车不能确定
  *
  * @author YvesHe
  *

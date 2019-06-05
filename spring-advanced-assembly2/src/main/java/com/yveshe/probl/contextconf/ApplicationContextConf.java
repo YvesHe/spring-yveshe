@@ -12,10 +12,8 @@ package com.yveshe.probl.contextconf;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.yveshe.probl.bean.Car;
-
 @Configuration
-@ComponentScan(basePackageClasses = Car.class)
+@ComponentScan(basePackageClasses = com.yveshe.probl.bean.Car.class)
 public class ApplicationContextConf {
 
 }
