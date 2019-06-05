@@ -9,6 +9,6 @@
  */
 package com.yveshe.singleton.usage3.bean;
 
-public class Singleton {
+public class Prototype {
 
 }

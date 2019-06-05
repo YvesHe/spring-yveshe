@@ -7,8 +7,8 @@
  *
  * Author       YvesHe
  */
-package com.yveshe.singleton.usage3.bean;
+package com.yveshe.singleton.usage2.bean;
 
-public class Singleton {
+public class Prototype {
 
 }
