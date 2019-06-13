@@ -10,5 +10,7 @@
 		<module>spring-advanced-assembly2</module>
 		<module>spring-beans-scope-singleton</module>
     <module>spring-beans-scope-prototype</module>
+    <module>spring-runtime-inject</module>
+    <module>spring-aspect</module>
   </modules>
 </project>
