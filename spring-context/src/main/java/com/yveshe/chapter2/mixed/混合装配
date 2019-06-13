@@ -1,0 +1,6 @@
+混合配置， 第一件需要了解的事情就是在自动装配时， 它并不在意要装配的bean来自哪里。 自动装配的时候会考虑到Spring容器中所有的bean， 不管它是在JavaConfig或XML中声明的还是通过组件扫描获取到的。
+
+两个问题:
+1.在JavaConfig配置中如何引用XML中配置的bean?
+
+2.在XML配置中如何引用JavaConfig中配置的bean?

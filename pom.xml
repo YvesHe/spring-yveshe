@@ -13,5 +13,6 @@
     <module>spring-runtime-inject</module>
     <module>spring-aspect</module>
     <module>spring-aspect-around</module>
+    <module>spring-context</module>
   </modules>
 </project>
