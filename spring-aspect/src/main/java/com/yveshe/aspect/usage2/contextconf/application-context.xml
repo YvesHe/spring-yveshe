@@ -19,11 +19,24 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<!-- 激活注册Bean 扫描注册 -->
-	<context:annotation-config />
-	<context:component-scan base-package="com.yveshe.aspect.usage2" />
 
-	<!-- 开启AOP -->
-    <aop:aspectj-autoproxy proxy-target-class="true" ></aop:aspectj-autoproxy>	
+	<!-- 如果需要对注解@AspectJ的支持或者想显示的配置 proxy-target-class属性时,则需要配置改标签,如果是完全的使用XML方式配置,则该标签可以不配置-->
+    <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="false" ></aop:aspectj-autoproxy>	
+   
+   
+    <bean id="perfomance" class="com.yveshe.aspect.usage2.Performance"/>
+    <bean id="aspect" class="com.yveshe.aspect.usage2.aop.Audience"/>
+    
+    <aop:config>
+        <aop:pointcut id="pointcut" expression="execution(** com.yveshe.aspect.usage2.Performance.perform(..))"/>   <!-- 定义通用的切点 -->
+        <aop:aspect ref="aspect">   <!-- 配置切面: 通知(silenceCellPhones,cleanup)+切点(pointcut,切点表达式形式) -->
+             <aop:before pointcut-ref="pointcut" method="silenceCellPhones"/>
+             <aop:before pointcut-ref="pointcut" method="takeSeats"/>
+             <aop:after-returning pointcut-ref="pointcut" method="applause"/>
+             <aop:after-throwing  pointcut-ref="pointcut" method="demanRefund"/>
+             <aop:after pointcut="execution(** com.yveshe.aspect.usage2.Performance.perform(..))" method="cleanup"/>
+             <aop
+        </aop:aspect>
+    </aop:config>
 
 </beans>

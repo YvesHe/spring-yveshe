@@ -9,6 +9,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class AppTest {
 
+    /**
+     * usage1:
+     */
     @Test
     public void shouldAnswerWithTrue() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(com.yveshe.aspect.usage1.contextconf.ApplicationContextConf.class);
@@ -19,18 +22,19 @@ public class AppTest {
             performance1.perform();
         } catch (Exception e) {
             // 表演失败,所有符合条件的切面方法执行完毕后抛出异常
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
+    // 表演之前: 观众手机静音!
+    // 表演之前: 观众落座!
+    // Performance: 演员开始演出!
+    // 表演结束: 不管成功还是失败都执行打扫卫生!
+    // 表演失败: 观众退票!
+    // Performance: 演出出现失误!
+
     /**
-     * 表演之前: 观众手机静音!
-     * 表演之前: 观众落座!
-     * 演员开始演出!
-     * 表演结束: 不管成功还是失败都执行打扫卫生!
-     * 表演成功: 观众喝彩!
+     * usage2:
      */
-
-
     @Test
     public void shouldAnswerWithTrue2() {
         ClassPathXmlApplicationContext context2 = new ClassPathXmlApplicationContext("/com/yveshe/aspect/usage2/contextconf/application-context.xml");
@@ -39,13 +43,11 @@ public class AppTest {
 
         performance2.perform();
     }
-    /**
-     * 表演之前: 观众手机静音!
-     * 表演之前: 观众落座!
-     * 演员开始演出!
-     * 表演结束: 不管成功还是失败都执行打扫卫生!
-     * 表演成功: 观众喝彩!
-     */
-
+    // 表演之前: 观众手机静音!
+    // 表演之前: 观众落座!
+    // Performance: 演员开始演出!
+    // Performance: 演出正常结束!
+    // 表演成功: 观众喝彩!
+    // 表演结束: 不管成功还是失败都执行打扫卫生!
 
 }

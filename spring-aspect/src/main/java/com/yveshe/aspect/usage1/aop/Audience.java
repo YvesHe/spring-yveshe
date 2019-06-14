@@ -7,7 +7,7 @@
  *
  * Author       YvesHe
  */
-package com.yveshe.aspect.usage1;
+package com.yveshe.aspect.usage1.aop;
 
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -55,14 +55,6 @@ public class Audience {
     }
 
     /**
-     * 演出之后: 表演结束(不管成功还是失败都执行)
-     */
-    @After(value = "performance()")
-    public void afterPerformance() {
-        System.out.println("表演结束: 不管成功还是失败都执行打扫卫生!");
-    }
-
-    /**
      * 表演成功之后: 表演成功,观众喝彩
      */
     @AfterReturning(value = "performance()")
@@ -76,6 +68,14 @@ public class Audience {
     @AfterThrowing(value = "performance()")
     public void demanRefund() {
         System.out.println("表演失败: 观众退票!");
+    }
+
+    /**
+     * 演出之后: 表演结束(不管成功还是失败都执行)
+     */
+    @After(value = "performance()")
+    public void afterPerformance() {
+        System.out.println("表演结束: 不管成功还是失败都执行打扫卫生!");
     }
 
 }
