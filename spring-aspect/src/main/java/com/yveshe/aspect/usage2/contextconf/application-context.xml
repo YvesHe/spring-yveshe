@@ -35,7 +35,6 @@
              <aop:after-returning pointcut-ref="pointcut" method="applause"/>
              <aop:after-throwing  pointcut-ref="pointcut" method="demanRefund"/>
              <aop:after pointcut="execution(** com.yveshe.aspect.usage2.Performance.perform(..))" method="cleanup"/>
-             <aop
         </aop:aspect>
     </aop:config>
 
