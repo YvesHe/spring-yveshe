@@ -15,5 +15,9 @@
     <module>spring-aspect-around</module>
     <module>spring-context</module>
     <module>spring-aspect-pointcut</module>
+    <module>spring-aspect-schema</module>
+    <module>spring-aspect-schema-around</module>
+    <module>spring-aspect-introductions</module>
+    <module>spring-aspect-schema-introductions</module>
   </modules>
 </project>
