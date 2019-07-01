@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+    <bean id="perfomance" class="com.yveshe.Performance"/>
+
+    <!-- 开启自动代理: 强制使用CGLIB来生成代理类 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="false" ></aop:aspectj-autoproxy>	
+   
+    <!-- 配置AOP: Audience中定义了通知 -->
+    <bean id="aspect" class="com.yveshe.aop.Audience"/>
+    <aop:config>
+        <!-- 定义切点:切点表达式用来匹配目标对象需要增强的方法 -->
+        <aop:pointcut id="pointcut" expression="execution(** com.yveshe.Performance.perform(String,String)) and args(programName,notice)"/>
+        <aop:aspect ref="aspect">
+             <aop:before pointcut-ref="pointcut" method="beforePerfomanceNotice" arg-names="programName,notice" />
+             <aop:before pointcut-ref="pointcut" method="beforePerfomanceShowName"/>  <!-- 当增加方法中参数名称与args(programName,notice)一致时,可以省略配置arg-names,否则需要显示的明确指出-->
+             <aop:after-returning pointcut="execution(** com.yveshe.Performance.perform(..))" method="applause" arg-names="result" returning="result"/>
+             <aop:after-throwing  pointcut="execution(** com.yveshe.Performance.perform(..))" method="demanRefund" arg-names="exception" throwing="exception"/>
+             <aop:after  pointcut-ref="pointcut" method="cleanup" />
+        </aop:aspect>
+    </aop:config>
+    
+    
+    <!-- 参考: https://my.oschina.net/u/2377110/blog/1525709 -->
+
+</beans>

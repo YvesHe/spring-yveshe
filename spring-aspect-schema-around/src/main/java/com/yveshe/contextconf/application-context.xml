@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+    <bean id="perfomance" class="com.yveshe.Performance"/>
+
+    <!-- 开启自动代理: 强制使用CGLIB来生成代理类 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="false" ></aop:aspectj-autoproxy>	
+   
+    <!-- 配置AOP -->
+    <bean id="aspect" class="com.yveshe.aop.Audience"/>
+    <aop:config>
+        <!-- 定义切点:切点表达式用来匹配目标对象需要增强的方法 -->
+        <aop:pointcut id="pointcut" expression="execution(** com.yveshe.Performance.perform(..))"/>
+        <aop:aspect ref="aspect">
+             <aop:around method="watchPerformance" arg-names="" pointcut-ref="pointcut" />
+        </aop:aspect>
+    </aop:config>
+    
+</beans>

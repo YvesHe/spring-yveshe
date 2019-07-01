@@ -19,5 +19,7 @@
     <module>spring-aspect-schema-around</module>
     <module>spring-aspect-introductions</module>
     <module>spring-aspect-schema-introductions</module>
+    <module>spring-autoproxy</module>
+    <module>spring-transaction</module>
   </modules>
 </project>
